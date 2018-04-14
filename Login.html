@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+<style>
+body{
+	background-color: #00001a;
+}
+form{
+	color:  #00001a;
+}
+
+div.box{
+	border-radius: 25px;
+    border: 1px solid #00001a;
+	width: 400px;
+    margin: auto;
+    background-color: #e1e1ea;
+	padding: 20px;
+}
+
+input[type=text],[type=password]{
+	border-radius: 4px;
+	width: 300px;
+}
+
+</style>
+</head>	
+<body>
+<form action="/quotes" method="POST">
+<div class="box">
+Brukernavn:<br> <input type="text" placeholder ="name" name="username"><br>
+Passord:<br> <input type="text" name="password"><br>
+<input type="submit" name="Submit"><br>
+<a href="NewUser.html">Ny bruker</a>
+</div>
+</form>
+
+</body>
+</html>
