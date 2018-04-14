@@ -11,30 +11,25 @@ app.use(express.static('public'))
 app.set('views', __dirname + '/views');
 
 app.post('/quotes',function(req,res){
-	db.collection('quotes').save(req.body, function(err,result){
-		if(err) return console.log(err)
-			
-		console.log("Saved to DB")
-		res.redirect('/')
+	db.collection('quotes').save(req.body, function(err,result){	//save data to quotes from post
+		if(err) return console.log(err)								//return errors to console
+		console.log("Saved to DB")									//log success
+		res.redirect('/')											//return to main
 	})
 })
 
-MongoClient.connect(url, function(err,client){	
-	if (err) return console.log(err)
-		 db = client.db('blackscreen') // whatever your database name is
-		app.listen(3000, function(){
+MongoClient.connect(url, function(err,client){	//connects ti db-url
+	if (err) return console.log(err)	//picks up and write errors to console
+		 db = client.db('blackscreen') 	// whatever your database name is
+		app.listen(3000, function(){	//listen to port 300
 		console.log('listening on 3000')
   })
 })
 
 app.get('/', function(req,res){
-
-	db.collection('quotes').find().toArray(function(err,result){
-		if(err) return console.log(err)
-		res.render('index.ejs', {quotes: result} )
+	db.collection('quotes').find().toArray(function(err,result){ 	//get data and turn to string from quotes in db
+		if(err) return console.log(err)								//return errors to console
+		res.render('index.ejs', {quotes: result} )					//write data to index.ejs
 	})
 })
 
-//app.listen(1337,function(){
-//	console.log("listening on 1337")
-//})
